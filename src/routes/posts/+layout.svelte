@@ -7,7 +7,7 @@
 					<a href="/posts/one">One</a>
 				</li>
 				<li>
-					<a href="/posts/tow">Two</a>
+					<a href="/posts/two">Two</a>
 				</li>
 			</ul>
 		</nav>
