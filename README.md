@@ -1,3 +1,6 @@
+# Learn sveltekit
+Following tutorial from joyofcode [video](https://youtu.be/MoGkX4RvZ38?si=dWJGHQsL-XVN6KSu&t=5929)
+
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
