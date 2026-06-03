@@ -1,9 +1,18 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import type { PageProps } from './$types';
+
+	let { data }: PageProps = $props();
+
+	function formatDate(date: Date) {
+		return new Intl.DateTimeFormat('en', { dateStyle: 'long' }).format(date);
+	}
 </script>
 
-<h1>Post</h1>
+<hgroup>
+	<h1>{data.post.title}</h1>
+	<h2>{formatDate(data.post.createdAt)}</h2>
+</hgroup>
 
-<pre>
-    {JSON.stringify($page, null, 3)}
-</pre>
+<div class="content">
+	{data.post.content}
+</div>
