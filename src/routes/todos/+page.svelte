@@ -1,11 +1,43 @@
 <script lang="ts">
+	import { invalidateAll } from '$app/navigation';
 	import type { PageProps } from './$types';
+
+	type Data = {
+		success: boolean;
+		errors: Record<string, string>;
+	};
 
 	let { data }: PageProps = $props();
 
-	async function addTodo(event: Event) {}
+	let form: Data;
 
-	async function removeTodo(event: Event) {}
+	async function addTodo(event: Event) {
+		const formElement = event.target as HTMLFormElement;
+		const data = new FormData(formElement);
+
+		const response = await fetch(formElement.action, {
+			method: 'POST',
+			body: data
+		});
+
+		const responseData = await response.json();
+		form = responseData;
+
+		formElement.reset();
+		await invalidateAll();
+	}
+
+	async function removeTodo(event: Event) {
+		const formElement = event.target as HTMLFormElement;
+		const data = new FormData(formElement);
+
+		const response = await fetch(formElement.action, {
+			method: 'DELETE',
+			body: data
+		});
+
+		await invalidateAll();
+	}
 </script>
 
 <pre>
