@@ -25,7 +25,7 @@ export function addTodo(text: string) {
 	todos.push(todo);
 }
 
-export function removeTodo(id) {
+export function removeTodo(id: number) {
 	todos = todos.filter((todo) => todo.id !== id);
 }
 
