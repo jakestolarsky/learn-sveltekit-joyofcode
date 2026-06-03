@@ -9,7 +9,7 @@
 
 	let { data }: PageProps = $props();
 
-	let form: Data;
+	let form = $state<Data | undefined>();
 
 	async function addTodo(event: SubmitEvent) {
 		event.preventDefault();
