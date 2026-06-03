@@ -62,8 +62,15 @@
 
 <form onsubmit={addTodo} method="POST">
 	<input type="text" name="todo" />
+	{#if form?.errors?.todo}
+		<p class="error">This field is required</p>
+	{/if}
 	<button type="submit">+ Add Todo</button>
 </form>
+
+{#if form?.success}
+	<p>Added todo 🎉</p>
+{/if}
 
 <style>
 	ul {
