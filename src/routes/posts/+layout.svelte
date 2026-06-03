@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import type { Post } from '../../../generated/prisma/client';
 
 	async function getPosts() {
@@ -18,9 +19,9 @@
 				{:then posts}
 					<p>Showing {posts.length} posts.</p>
 
-					{#each posts as { slug, title }}
+					{#each posts as { slug, title } (slug)}
 						<li>
-							<a href="/posts/{slug}">{title}</a>
+							<a href={resolve('/posts/[slug]', { slug })}>{title}</a>
 						</li>
 					{/each}
 				{:catch error}
