@@ -1,5 +1,5 @@
 # Learn sveltekit
-Following tutorial from joyofcode [video](https://youtu.be/MoGkX4RvZ38?si=dWJGHQsL-XVN6KSu&t=5929)
+Following tutorial from joyofcode [video](https://youtu.be/MoGkX4RvZ38?si=9_HItc4GlWtgPt3Q&t=11815)
 
 # sv
 
