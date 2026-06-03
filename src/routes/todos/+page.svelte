@@ -11,8 +11,10 @@
 
 	let form: Data;
 
-	async function addTodo(event: Event) {
-		const formElement = event.target as HTMLFormElement;
+	async function addTodo(event: SubmitEvent) {
+		event.preventDefault();
+
+		const formElement = event.currentTarget as HTMLFormElement;
 		const data = new FormData(formElement);
 
 		const response = await fetch(formElement.action, {
@@ -27,11 +29,13 @@
 		await invalidateAll();
 	}
 
-	async function removeTodo(event: Event) {
-		const formElement = event.target as HTMLFormElement;
+	async function removeTodo(event: SubmitEvent) {
+		event.preventDefault();
+
+		const formElement = event.currentTarget as HTMLFormElement;
 		const data = new FormData(formElement);
 
-		const response = await fetch(formElement.action, {
+		await fetch(formElement.action, {
 			method: 'DELETE',
 			body: data
 		});
@@ -45,7 +49,7 @@
 </pre>
 
 <ul>
-	{#each data.todos as todo}
+	{#each data.todos as todo (todo.id)}
 		<li>
 			<span>{todo.text}</span>
 			<form onsubmit={removeTodo} method="POST">
