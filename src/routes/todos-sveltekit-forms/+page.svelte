@@ -1,4 +1,6 @@
 <script lang="ts">
+	//enhance mekes that webapp isnt refresh after action
+	import { enhance } from '$app/forms';
 	import type { ActionData, PageData } from './$types';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
@@ -12,7 +14,7 @@
 	{#each data.todos as todo (todo.id)}
 		<li>
 			<span>{todo.text}</span>
-			<form method="POST" action="?/removeTodo">
+			<form method="POST" action="?/removeTodo" use:enhance>
 				<input type="hidden" name="id" value={todo.id} />
 				<button class="delete" type="submit">❌</button>
 			</form>
@@ -20,7 +22,7 @@
 	{/each}
 </ul>
 
-<form method="POST" action="?/addTodo">
+<form method="POST" action="?/addTodo" use:enhance>
 	<input type="text" name="todo" />
 	{#if form?.missing}
 		<p class="error">This field is required</p>
