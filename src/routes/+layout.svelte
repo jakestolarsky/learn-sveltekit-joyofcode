@@ -16,6 +16,9 @@
 		<li>
 			<a href="/todos">Todos</a>
 		</li>
+		<li>
+			<a href="/todos-sveltekit-forms">Todos Sveltekit</a>
+		</li>
 	</ul>
 </nav>
 
