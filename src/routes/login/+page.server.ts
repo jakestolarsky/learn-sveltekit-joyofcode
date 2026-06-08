@@ -1,10 +1,25 @@
-import type { Actions } from '@sveltejs/kit';
+import { fail, redirect, type Actions } from '@sveltejs/kit';
+import { zfd } from 'zod-form-data';
 
 export const actions: Actions = {
 	default: async ({ request }) => {
 		const formData = await request.formData();
 
-		const user = String(formData.get('user'));
-		const password = String(formData.get('password'));
+		const loginSchema = zfd.formData({
+			user: zfd.text(),
+			password: zfd.text()
+		});
+
+    const result = loginSchema.safeParse(formData);
+
+    if (!result.success) {
+      const data = {
+        data: Object.fromEntries(formData);
+        erorrs: result.error.flatten().fieldErrors;
+      }
+      return fail(400, data);
+    }
+
+    throw redirect(303, '/login');
 	}
 };
