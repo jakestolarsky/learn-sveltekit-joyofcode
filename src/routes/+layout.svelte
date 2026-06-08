@@ -19,6 +19,9 @@
 		<li>
 			<a href="/todos-sveltekit-forms">Todos Sveltekit</a>
 		</li>
+		<li>
+			<a href="/login">Login</a>
+		</li>
 	</ul>
 </nav>
 
