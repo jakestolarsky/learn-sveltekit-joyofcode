@@ -1,0 +1,29 @@
+{
+	"/": [],
+	"/[[lang]]/about": [],
+	"/api/newsletter": [
+		"src/routes/api/newsletter/+server.ts"
+	],
+	"/api/posts": [
+		"src/routes/api/posts/+server.ts"
+	],
+	"/demo": [],
+	"/demo/playwright": [],
+	"/forms": [],
+	"/image/[width]x[height]": [],
+	"/login": [
+		"src/routes/login/+page.server.ts"
+	],
+	"/posts": [],
+	"/posts/create": [],
+	"/posts/[slug]": [
+		"src/routes/posts/[slug]/+page.server.ts"
+	],
+	"/todos-sveltekit-forms": [
+		"src/routes/todos-sveltekit-forms/+page.server.ts"
+	],
+	"/todos": [
+		"src/routes/todos/+page.server.ts",
+		"src/routes/todos/+server.ts"
+	]
+}

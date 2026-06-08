@@ -1,0 +1,1 @@
+import{I as e,d as t,p as n}from"../chunks/BVVHQzhB.js";import"../chunks/xihTtKlq.js";var r=n(`<h1>Posts</h1> <p>You can <a href="/posts/create">+create</a> or edit posts here.</p>`,1);function i(n){var i=r();e(2),t(n,i)}export{i as component};
