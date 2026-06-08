@@ -1,9 +1,25 @@
 <script lang="ts">
 	//enhance mekes that webapp isnt refresh after action
 	import { enhance } from '$app/forms';
-	import type { ActionData, PageData } from './$types';
+	import type { ActionData, PageData, SubmitFunction } from './$types';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
+
+	let loading = $state(false);
+
+	const addTodo: SubmitFunction = () => {
+		// do sth BEFORE the form submits
+		loading = true;
+
+		return async ({ update }) => {
+			// do sth AFTER the form submits
+			try {
+				await update();
+			} finally {
+				loading = false;
+			}
+		};
+	};
 </script>
 
 <pre>
@@ -22,12 +38,16 @@
 	{/each}
 </ul>
 
-<form method="POST" action="?/addTodo" use:enhance>
+<form method="POST" action="?/addTodo" use:enhance={addTodo}>
 	<input type="text" name="todo" />
 	{#if form?.missing}
 		<p class="error">This field is required</p>
 	{/if}
-	<button type="submit">+ Add Todo</button>
+	<button aria-busy={loading} class:secondary={loading} type="submit">
+		{#if !loading}
+			+ Add Todo
+		{/if}
+	</button>
 	<button formaction="?/clearTodos" class="secondary" type="submit">Clear</button>
 </form>
 
